@@ -9,26 +9,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PetListAdapter : RecyclerView.Adapter<PetListAdapter.ViewHolder>() {
-
-    var petList:List<Pet>? = null
+class PetListAdapter(private val petList: List<Pet>) : RecyclerView.Adapter<PetListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_pet_view,parent,false)
         return ViewHolder(view)
     }
 
-    override fun getItemCount() = petList?.size ?: 0
+    override fun getItemCount() = petList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        petList?.get(position)?.let{
-            holder.bind(it)
-        }
-    }
-
-    fun setData(petList:List<Pet>){
-        this.petList = petList
-        notifyDataSetChanged()
+        holder.bind(petList[position])
     }
 
     class ViewHolder(private val view: View):RecyclerView.ViewHolder(view) {

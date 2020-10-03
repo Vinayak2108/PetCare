@@ -1,51 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    style="?android:buttonBarStyle"
-    tools:context=".view.activity.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/main_screen_spacing"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        style="?android:buttonBarStyle"
+        tools:context=".view.activity.MainActivity">
 
-        <Button
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/main_screen_spacing"
-            android:background="@drawable/bg_call_button"
-            android:textColor="@android:color/white"
-            android:text="@string/chat"
-            android:textAllCaps="false"
-            android:textSize="@dimen/button_text"
-            android:padding="@dimen/button_padding"
-            android:layout_weight="1"
-            style="?android:buttonBarButtonStyle"/>
+            android:padding="@dimen/main_screen_spacing"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/chat"
+                android:layout_margin="@dimen/main_screen_spacing"
+                android:background="@drawable/bg_call_button"
+                android:textColor="@android:color/white"
+                android:text="@string/chat"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_text"
+                android:padding="@dimen/button_padding"
+                android:layout_weight="1"
+                style="?android:buttonBarButtonStyle"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/call"
+                android:layout_margin="@dimen/main_screen_spacing"
+                android:background="@drawable/bg_chat_button"
+                android:textColor="@android:color/white"
+                android:text="@string/call"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_text"
+                android:padding="@dimen/button_padding"
+                android:layout_weight="1"
+                style="?android:buttonBarButtonStyle"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/main_screen_spacing"
-            android:background="@drawable/bg_chat_button"
-            android:textColor="@android:color/white"
-            android:text="@string/call"
-            android:textAllCaps="false"
-            android:textSize="@dimen/button_text"
-            android:padding="@dimen/button_padding"
-            android:layout_weight="1"
-            style="?android:buttonBarButtonStyle"/>
+            android:layout_marginStart="@dimen/main_screen_spacing_dual"
+            android:layout_marginEnd="@dimen/main_screen_spacing_dual"
+            android:padding="@dimen/working_hr_padding"
+            android:background="@drawable/bg_trans_solid_gray_stroke"
+            android:gravity="center"
+            tools:text="1:00 AM to 2:00 PM"
+            android:textSize="@dimen/workingHRSize"
+            android:id="@+id/workingHR"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/petList"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_pet_view"
+                tools:itemCount="50"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@android:color/white"
+                android:id="@+id/listErrorView">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Error"
+                    android:id="@+id/listErrorMsg"
+                    android:textSize="@dimen/error_msg_size"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="SubMessage"
+                    android:id="@+id/listErrorSubMsg"
+                    android:textSize="@dimen/error_sub_msg_size"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="@android:color/white"
+                android:id="@+id/listLoaderView">
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/loading_text_size"
+                    android:layout_marginTop="@dimen/loading_spacing"
+                    android:text="@string/loading"/>
+            </LinearLayout>
+
+        </FrameLayout>
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        tools:listitem="@layout/item_pet_view"
-        tools:itemCount="50"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:id="@+id/errorView">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Error"
+            android:id="@+id/errorMsg"
+            android:textSize="@dimen/error_msg_size"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="SubMessage"
+            android:id="@+id/errorSubMsg"
+            android:textSize="@dimen/error_sub_msg_size"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:id="@+id/loaderView">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/loading_text_size"
+            android:layout_marginTop="@dimen/loading_spacing"
+            android:text="@string/loading"/>
+    </LinearLayout>
+
+</FrameLayout>
