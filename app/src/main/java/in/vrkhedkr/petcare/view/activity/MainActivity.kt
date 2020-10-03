@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(MainActivityViewModel::class.java)
         initLayout()
         loadData()
     }
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadConfig() {
-
+        viewModel.loadConfig()
     }
 
     private fun initLayout() {
