@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadPetList() {
-
+        viewModel.loadPetList()
     }
 
     private fun loadConfig() {
@@ -72,17 +72,19 @@ class MainActivity : AppCompatActivity() {
             loadData()
         }
 
-        errorView?.setOnClickListener {
+        listErrorView?.setOnClickListener {
             loadPetList()
         }
 
     }
 
     private fun setListData(petListData: List<Pet>) {
+        setListLoader(false)
         petList.adapter = PetListAdapter(petListData)
     }
 
     private fun setConfig(config: ClinicConfig) {
+        setLoader(false)
         call?.isVisible = config.isCallEnabled
         chat?.isVisible = config.isChatEnabled
         workingHR?.text = getString(R.string.working_hr ,config.workHours)
@@ -92,6 +94,7 @@ class MainActivity : AppCompatActivity() {
        loaderView?.isVisible = command
     }
     private fun showError(msg:String, subMessage:String){
+        setLoader(false)
         errorView?.isVisible = true
         errorMsg?.text = msg
         errorSubMsg?.text = subMessage
@@ -104,6 +107,7 @@ class MainActivity : AppCompatActivity() {
         listLoaderView?.isVisible = command
     }
     private fun showListError(msg:String, subMessage:String){
+        setListLoader(false)
         listErrorView?.isVisible = true
         listErrorMsg?.text = msg
         listErrorSubMsg?.text = subMessage

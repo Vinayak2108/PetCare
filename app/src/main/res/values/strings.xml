@@ -7,4 +7,14 @@
     <string name="dis_pet_image">Pet Image</string>
     <string name="working_hr">Office Hours: %1$s</string>
     <string name="loading">Loading.....</string>
+    <string name="unknown_error_msg">Oops, Error</string>
+    <string name="unknown_error_sub_msg">please try again later</string>
+    <string name="server_error_sub_msg">tap to retry</string>
+    <string name="timeout_error_sub_msg">tap to retry</string>
+    <string name="network_error_sub_msg">tap to retry</string>
+    <string name="server_error_msg">Server Error</string>
+    <string name="timeout_error_msg">Connection timeout</string>
+    <string name="network_error_msg">Unable to connect</string>
+    <string name="no_data_error_msg">No Data to Show</string>
+    <string name="no_data_error_sub_msg">please try again later</string>
 </resources>
