@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/main_screen_spacing">
+
+    <ImageView
+        android:layout_width="@dimen/pet_image_size"
+        android:layout_height="@dimen/pet_image_size"
+        android:contentDescription="@string/dis_pet_image"
+        tools:background="@android:color/darker_gray"
+        android:layout_margin="@dimen/main_screen_spacing"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/main_screen_spacing"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textSize="@dimen/pet_name_size"
+            tools:text="Pet name"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/pet_date_size"
+            tools:text="Since 12 Aug 1930"
+            android:text="@string/since"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/pet_read_more"
+            android:text="@string/read_more"/>
+
+    </LinearLayout>
+
+</LinearLayout>

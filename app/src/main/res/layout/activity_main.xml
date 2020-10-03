@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    style="?android:buttonBarStyle"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/main_screen_spacing"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_screen_spacing"
+            android:background="@drawable/bg_primary_button"
+            android:textColor="@android:color/white"
+            android:text="@string/call"
+            android:textSize="@dimen/button_text"
+            android:padding="@dimen/button_padding"
+            android:layout_weight="1"
+            style="?android:buttonBarButtonStyle"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_screen_spacing"
+            android:background="@drawable/bg_primary_button"
+            android:textColor="@android:color/white"
+            android:text="@string/sms"
+            android:textSize="@dimen/button_text"
+            android:padding="@dimen/button_padding"
+            android:layout_weight="1"
+            style="?android:buttonBarButtonStyle"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/item_pet_view"
+        tools:itemCount="50"/>
+
+</LinearLayout>
