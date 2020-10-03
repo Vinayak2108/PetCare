@@ -1,5 +1,6 @@
-package `in`.vrkhedkr.petcare
+package `in`.vrkhedkr.petcare.view.activity
 
+import `in`.vrkhedkr.petcare.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 

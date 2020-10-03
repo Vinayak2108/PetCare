@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">PetCare</string>
     <string name="call">Call</string>
-    <string name="sms">SMS</string>
-    <string name="since">Since  $s</string>
+    <string name="chat">Chat</string>
+    <string name="since">Since %1$s</string>
     <string name="read_more">Click here to read more</string>
     <string name="dis_pet_image">Pet Image</string>
 </resources>

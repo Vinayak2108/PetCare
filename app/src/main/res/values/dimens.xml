@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="button_text">22sp</dimen>
+    <dimen name="button_text">25sp</dimen>
     <dimen name="button_padding">20dp</dimen>
     <dimen name="main_screen_spacing">5dp</dimen>
     <dimen name="pet_image_size">80dp</dimen>

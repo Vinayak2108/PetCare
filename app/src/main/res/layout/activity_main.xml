@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="?android:buttonBarStyle"
-    tools:context=".MainActivity">
+    tools:context=".view.activity.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,9 +17,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/main_screen_spacing"
-            android:background="@drawable/bg_primary_button"
+            android:background="@drawable/bg_call_button"
             android:textColor="@android:color/white"
-            android:text="@string/call"
+            android:text="@string/chat"
+            android:textAllCaps="false"
             android:textSize="@dimen/button_text"
             android:padding="@dimen/button_padding"
             android:layout_weight="1"
@@ -29,9 +30,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/main_screen_spacing"
-            android:background="@drawable/bg_primary_button"
+            android:background="@drawable/bg_chat_button"
             android:textColor="@android:color/white"
-            android:text="@string/sms"
+            android:text="@string/call"
+            android:textAllCaps="false"
             android:textSize="@dimen/button_text"
             android:padding="@dimen/button_padding"
             android:layout_weight="1"

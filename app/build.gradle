@@ -34,4 +34,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    //LiveData and LifeCycle
+    def lifecycle_version = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    //HTTP Client
+    def okHttp_version = "4.9.0"
+    implementation "com.squareup.okhttp3:okhttp:$okHttp_version"
+
+
 }
