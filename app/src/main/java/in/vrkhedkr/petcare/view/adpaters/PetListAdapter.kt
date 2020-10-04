@@ -3,6 +3,9 @@ package `in`.vrkhedkr.petcare.view.adpaters
 import `in`.vrkhedkr.petcare.R
 import `in`.vrkhedkr.petcare.model.Pet
 import `in`.vrkhedkr.petcare.util.DateUtil
+import `in`.vrkhedkr.petcare.view.activity.PetDetails
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +36,12 @@ class PetListAdapter(private val petList: List<Pet>) : RecyclerView.Adapter<PetL
             addedDate.text = view.context.getString(R.string.since,
                 DateUtil.getSimpleDateString(pet.dateAdded)
             )
+            view.setOnClickListener {
+                it.context.startActivity(Intent(it.context,PetDetails::class.java).apply {
+                    putExtra("url", pet.contentUrl)
+                    putExtra("title", pet.title)
+                })
+            }
         }
     }
 }
