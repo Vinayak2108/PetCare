@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="button_text">25sp</dimen>
-    <dimen name="button_padding">20dp</dimen>
+    <dimen name="button_padding">18dp</dimen>
     <dimen name="main_screen_spacing">5dp</dimen>
     <dimen name="main_screen_spacing_dual">10dp</dimen>
     <dimen name="pet_image_size">80dp</dimen>
     <dimen name="pet_name_size">25sp</dimen>
     <dimen name="pet_date_size">18sp</dimen>
     <dimen name="pet_read_more">15sp</dimen>
-    <dimen name="workingHRSize">25sp</dimen>
-    <dimen name="working_hr_padding">20dp</dimen>
+    <dimen name="workingHRSize">22sp</dimen>
+    <dimen name="working_hr_padding">18dp</dimen>
     <dimen name="stroke_width">2dp</dimen>
     <dimen name="error_msg_size">30sp</dimen>
     <dimen name="error_sub_msg_size">20sp</dimen>

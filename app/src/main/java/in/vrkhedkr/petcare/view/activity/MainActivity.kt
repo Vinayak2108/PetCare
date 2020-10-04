@@ -5,6 +5,7 @@ import `in`.vrkhedkr.petcare.model.ClinicConfig
 import `in`.vrkhedkr.petcare.model.ClinicConfigState
 import `in`.vrkhedkr.petcare.model.Pet
 import `in`.vrkhedkr.petcare.model.PetState
+import `in`.vrkhedkr.petcare.view.DialogHelper
 import `in`.vrkhedkr.petcare.view.adpaters.PetListAdapter
 import `in`.vrkhedkr.petcare.viewmodel.MainActivityViewModel
 import androidx.appcompat.app.AppCompatActivity
@@ -35,11 +36,9 @@ class MainActivity : AppCompatActivity() {
         loadConfig()
         loadPetList()
     }
-
     private fun loadPetList() {
         viewModel.loadPetList()
     }
-
     private fun loadConfig() {
         viewModel.loadConfig()
     }
@@ -56,7 +55,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-
         viewModel.petState.observe(this , Observer { petState ->
             when(petState){
                 is PetState.Loading -> {setListLoader(petState.command)}
@@ -71,18 +69,31 @@ class MainActivity : AppCompatActivity() {
         errorView?.setOnClickListener {
             loadData()
         }
-
         listErrorView?.setOnClickListener {
             loadPetList()
         }
 
+        chat.setOnClickListener {
+            handleCommunicationRequest()
+        }
+        call.setOnClickListener {
+            handleCommunicationRequest()
+        }
+
+    }
+
+    private fun handleCommunicationRequest() {
+       if(viewModel.isWithinWorkingHr()){
+            DialogHelper.showAlert(this,getString(R.string.in_hour_msg))
+       }else{
+           DialogHelper.showAlert(this,getString(R.string.out_hour_msg))
+       }
     }
 
     private fun setListData(petListData: List<Pet>) {
         setListLoader(false)
         petList.adapter = PetListAdapter(petListData)
     }
-
     private fun setConfig(config: ClinicConfig) {
         setLoader(false)
         call?.isVisible = config.isCallEnabled
@@ -115,5 +126,4 @@ class MainActivity : AppCompatActivity() {
     private fun hideListError(){
         listErrorView?.isVisible = false
     }
-
 }

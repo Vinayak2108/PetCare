@@ -17,4 +17,6 @@
     <string name="network_error_msg">Unable to connect</string>
     <string name="no_data_error_msg">No Data to Show</string>
     <string name="no_data_error_sub_msg">please try again later</string>
+    <string name="in_hour_msg">Thank you for getting in touch with us. We’ll get back to you as soon as possible</string>
+    <string name="out_hour_msg">Work hours has ended. Please contact us again on the next work day</string>
 </resources>
