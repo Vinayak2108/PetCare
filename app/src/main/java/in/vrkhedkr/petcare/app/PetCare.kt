@@ -1,5 +1,6 @@
 package `in`.vrkhedkr.petcare.app
 
+import `in`.vrkhedkr.petcare.network.lazyimg.LazyImage
 import android.app.Application
 import android.app.Person
 
@@ -9,7 +10,7 @@ class PetCare : Application() {
         instance = this
     }
     companion object{
-        lateinit var instance:PetCare
+        private lateinit var instance:PetCare
         fun getContext():PetCare{
             return instance
         }
