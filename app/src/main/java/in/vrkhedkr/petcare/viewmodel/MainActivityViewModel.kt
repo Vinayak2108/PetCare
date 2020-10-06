@@ -20,7 +20,7 @@ class MainActivityViewModel(private val repo: PetCareRepository) : ViewModel(){
     private val _clinicConfigState: MutableLiveData<ClinicConfigState> = MutableLiveData()
     val clinicConfigState : LiveData<ClinicConfigState> get() = _clinicConfigState
 
-    private fun getWorkingHR(): String? {
+    public fun getWorkingHR(): String? {
         return try {
             (clinicConfigState.value as ClinicConfigState.Success).config.workHours
         }catch (e:Exception){
@@ -28,8 +28,8 @@ class MainActivityViewModel(private val repo: PetCareRepository) : ViewModel(){
         }
     }
 
-    fun isWithinWorkingHr(): Boolean {
-        return DateUtil.isNowBetween(getWorkingHR(), Calendar.getInstance())
+    fun isWithinWorkingHr(workingHR: String? , now: Calendar): Boolean {
+        return DateUtil.isNowBetween(workingHR, now)
     }
 
     fun loadConfig(){

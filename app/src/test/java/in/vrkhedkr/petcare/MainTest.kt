@@ -38,12 +38,13 @@ class MainTest {
     }
     @Test
     fun `get simple date string for server time` (){
-        assertEquals(DateUtil.getSimpleDateString(TestData.getServerTimeStringData().first),TestData.getServerTimeStringData().second)
+        val testPair = TestData.getServerTimeStringData()
+        assertEquals(DateUtil.getSimpleDateString(testPair.first),testPair.second)
     }
     @Test
     fun `get simple date string for server time empty case` (){
-        assertEquals(DateUtil.getSimpleDateString(TestData.getServerTimeStringData().first),TestData.getServerTimeStringData().second)
+        val testPair = TestData.getServerTimeEmptyData()
+        assertEquals(DateUtil.getSimpleDateString(testPair.first),testPair.second)
     }
     //</editor-fold>
-
 }

@@ -16,6 +16,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleCommunicationRequest() {
-       if(viewModel.isWithinWorkingHr()){
+       if(viewModel.isWithinWorkingHr(viewModel.getWorkingHR(), Calendar.getInstance())){
             DialogHelper.showAlert(this,getString(R.string.in_hour_msg))
        }else{
            DialogHelper.showAlert(this,getString(R.string.out_hour_msg))
