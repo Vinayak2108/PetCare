@@ -31,4 +31,25 @@ object TestData {
     fun getServerTimeEmptyData(): Pair<String, String> {
         return Pair("", "Beginning")
     }
+
+    fun getPtToPxTestData(): Pair<Int,Float> {
+        //Considering Density = 420
+        return Pair(12,70f)
+    }
+
+    fun getPtToPxTestDataForZero(): Pair<Int,Float> {
+        //Considering Density = 420
+        return Pair(0,0f)
+    }
+
+    fun getDpToPxTestData(): Pair<Float,Int> {
+        //Considering Density = 420
+        return Pair(12f,5040)
+    }
+
+    fun getDpToPxTestDataForZero(): Pair<Float,Int> {
+        //Considering Density = 420
+        return Pair(0f,0)
+    }
+
 }

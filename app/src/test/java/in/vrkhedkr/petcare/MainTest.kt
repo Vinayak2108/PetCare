@@ -1,6 +1,7 @@
 package `in`.vrkhedkr.petcare
 
 import `in`.vrkhedkr.petcare.util.DateUtil
+import `in`.vrkhedkr.petcare.util.DimenUtil
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
 import org.junit.Test
@@ -9,6 +10,7 @@ class MainTest {
 
     private val workingHR = "M-F 09:00 - 18:00"
     private val workingHR_improper = "M-F09:00 - 18:00"
+    private val density = 420f
 
     //<editor-fold desc="DateUtil.class">
     @Test
@@ -47,4 +49,29 @@ class MainTest {
         assertEquals(DateUtil.getSimpleDateString(testPair.first),testPair.second)
     }
     //</editor-fold>
+
+
+    //<editor-fold desc="Dimen Util">
+    @Test
+    fun `test pt to px conversion` () {
+        val testPair = TestData.getPtToPxTestData()
+        assertEquals(DimenUtil.pt2Px(testPair.first,density),testPair.second)
+    }
+    @Test
+    fun `test pt to px conversion for zero` () {
+        val testPair = TestData.getPtToPxTestDataForZero()
+        assertEquals(DimenUtil.pt2Px(testPair.first, density),testPair.second)
+    }
+    @Test
+    fun `test dp to px conversion` () {
+        val testPair = TestData.getDpToPxTestData()
+        assertEquals(DimenUtil.dp2Px(testPair.first,density),testPair.second)
+    }
+    @Test
+    fun `test dp to px conversion for zero` () {
+        val testPair = TestData.getDpToPxTestDataForZero()
+        assertEquals(DimenUtil.dp2Px(testPair.first, density),testPair.second)
+    }
+    //</editor-fold>
+
 }
