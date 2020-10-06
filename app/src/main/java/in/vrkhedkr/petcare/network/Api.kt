@@ -5,7 +5,6 @@ import `in`.vrkhedkr.petcare.model.SuccessResponse
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
-import java.lang.Exception
 
 
 class Api {

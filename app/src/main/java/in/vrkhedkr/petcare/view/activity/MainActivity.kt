@@ -8,17 +8,12 @@ import `in`.vrkhedkr.petcare.model.PetState
 import `in`.vrkhedkr.petcare.view.DialogHelper
 import `in`.vrkhedkr.petcare.view.adpaters.PetListAdapter
 import `in`.vrkhedkr.petcare.viewmodel.MainActivityViewModel
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import kotlinx.android.synthetic.main.activity_main.*
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 

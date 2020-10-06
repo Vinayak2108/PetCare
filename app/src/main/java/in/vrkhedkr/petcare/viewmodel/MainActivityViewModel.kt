@@ -1,6 +1,5 @@
 package `in`.vrkhedkr.petcare.viewmodel
 
-import `in`.vrkhedkr.petcare.app.PetCare
 import `in`.vrkhedkr.petcare.model.*
 import `in`.vrkhedkr.petcare.network.*
 import `in`.vrkhedkr.petcare.util.DateUtil
@@ -11,8 +10,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 class MainActivityViewModel(app: Application) : AndroidViewModel(app){
 

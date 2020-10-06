@@ -1,13 +1,12 @@
 package `in`.vrkhedkr.petcare.view.activity
 
 import `in`.vrkhedkr.petcare.R
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.webkit.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_pet_details.*
-import kotlinx.android.synthetic.main.activity_pet_details.view.*
 
 class PetDetails : AppCompatActivity() {
 

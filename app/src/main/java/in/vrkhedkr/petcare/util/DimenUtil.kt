@@ -1,7 +1,6 @@
 package `in`.vrkhedkr.petcare.util
 
 import `in`.vrkhedkr.petcare.app.PetCare
-import android.content.Context
 
 object DimenUtil {
 

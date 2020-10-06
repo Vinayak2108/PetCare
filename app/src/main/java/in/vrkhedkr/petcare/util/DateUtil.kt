@@ -1,7 +1,5 @@
 package `in`.vrkhedkr.petcare.util
 
-import java.lang.Exception
-import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Calendar.DAY_OF_WEEK
