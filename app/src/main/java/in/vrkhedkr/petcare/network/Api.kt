@@ -11,7 +11,7 @@ class Api {
 
     fun call(url: String, callback: ApiCallBack){
         val request = buildGetRequest(url)
-        client.newCall(request).enqueue(object : Callback{
+        OkClientProvider.client.newCall(request).enqueue(object : Callback{
             override fun onFailure(call: Call, e: IOException) {
                 when(e){
                     is java.net.UnknownHostException -> {callback.onFailure(ErrorResponse(NETWORK_ERROR))}
@@ -42,9 +42,14 @@ class Api {
             .build()
     }
 
-    companion object{
-        private val client by lazy { OkHttpClient().newBuilder().build() }
-    }
+}
+
+/**
+ * Avoiding Multiple instances of OkHttpClient
+ * as it is heavy to have multiple clients
+ */
+object OkClientProvider{
+    val client by lazy { OkHttpClient().newBuilder().build() }
 }
 
 interface ApiCallBack{

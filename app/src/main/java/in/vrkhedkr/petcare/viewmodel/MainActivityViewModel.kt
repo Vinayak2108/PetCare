@@ -1,22 +1,23 @@
 package `in`.vrkhedkr.petcare.viewmodel
 
-import `in`.vrkhedkr.petcare.model.*
-import `in`.vrkhedkr.petcare.network.*
+import `in`.vrkhedkr.petcare.model.ClinicConfigState
+import `in`.vrkhedkr.petcare.model.PetState
+import `in`.vrkhedkr.petcare.repository.PetCareRepository
 import `in`.vrkhedkr.petcare.util.DateUtil
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MainActivityViewModel(app: Application) : AndroidViewModel(app){
+class MainActivityViewModel(private val repo: PetCareRepository) : ViewModel(){
 
     private val _petState: MutableLiveData<PetState> = MutableLiveData()
-        val petState : LiveData<PetState> get() = _petState
+    val petState : LiveData<PetState> get() = _petState
     private val _clinicConfigState: MutableLiveData<ClinicConfigState> = MutableLiveData()
-        val clinicConfigState : LiveData<ClinicConfigState> get() = _clinicConfigState
+    val clinicConfigState : LiveData<ClinicConfigState> get() = _clinicConfigState
 
     private fun getWorkingHR(): String? {
         return try {
@@ -33,68 +34,24 @@ class MainActivityViewModel(app: Application) : AndroidViewModel(app){
     fun loadConfig(){
         _clinicConfigState.value = ClinicConfigState.Loading(true)
         viewModelScope.launch(Dispatchers.IO) {
-            Api().call(URL_GET_CLINIC_CONFIG, object : ApiCallBack{
-                override fun onSuccess(successResponse: SuccessResponse) {
-                    fun setError(errorCode:Int){
-                        val errorStrings = getMessagesFor(errorCode)
-                        _clinicConfigState.postValue(ClinicConfigState.Error(errorStrings.first,errorStrings.second))
-                    }
-                    try{
-                        val jsonObject = successResponse.data.getJSONObject("settings")
-                        val parsedData = ClinicMapper.from(jsonObject)
-                        _clinicConfigState.postValue(ClinicConfigState.Loading(false))
-                        if(parsedData != null){
-                            _clinicConfigState.postValue(ClinicConfigState.Success(parsedData))
-                        }else{
-                            setError(UNKNOWN_ERROR)
-                        }
-                    }catch (e:Exception){
-                        setError(UNKNOWN_ERROR)
-                    }
+            val holder = repo.getClinicConfig()
+            withContext(Dispatchers.Main){
+                holder.observeForever{
+                    _clinicConfigState.postValue(it)
                 }
-                override fun onFailure(errorResponse: ErrorResponse) {
-                    _clinicConfigState.postValue(ClinicConfigState.Loading(false))
-                    val errorStrings = getMessagesFor(errorResponse.code)
-                    _clinicConfigState.postValue(ClinicConfigState.Error(errorStrings.first,errorStrings.second))
-                }
-            })
+            }
         }
     }
 
     fun loadPetList() {
         _petState.value = PetState.Loading(true)
         viewModelScope.launch(Dispatchers.IO) {
-            Api().call(URL_GET_PET_LIST, object : ApiCallBack{
-                override fun onSuccess(successResponse: SuccessResponse) {
-                    fun setError(errorCode:Int){
-                        val errorStrings = getMessagesFor(errorCode)
-                        _petState.postValue(PetState.Error(errorStrings.first,errorStrings.second))
-                    }
-                    try{
-                        val jsonArray = successResponse.data.getJSONArray("pets")
-                        val parsedData = PetMapper.from(jsonArray)
-                        _petState.postValue(PetState.Loading(false))
-                        when {
-                            parsedData?.isEmpty() == true -> {
-                                setError(NO_DATA_FOUND)
-                            }
-                            parsedData != null -> {
-                                _petState.postValue(PetState.Success(parsedData))
-                            }
-                            else -> {
-                                setError(UNKNOWN_ERROR)
-                            }
-                        }
-                    }catch (e:Exception){
-                        setError(UNKNOWN_ERROR)
-                    }
+            val holder = repo.getPetList()
+            withContext(Dispatchers.Main){
+                holder.observeForever{
+                    _petState.postValue(it)
                 }
-                override fun onFailure(errorResponse: ErrorResponse) {
-                    _petState.postValue(PetState.Loading(false))
-                    val errorStrings = getMessagesFor(errorResponse.code)
-                    _petState.postValue(PetState.Error(errorStrings.first,errorStrings.second))
-                }
-            })
+            }
         }
     }
 }

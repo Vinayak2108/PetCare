@@ -5,9 +5,11 @@ import `in`.vrkhedkr.petcare.model.ClinicConfig
 import `in`.vrkhedkr.petcare.model.ClinicConfigState
 import `in`.vrkhedkr.petcare.model.Pet
 import `in`.vrkhedkr.petcare.model.PetState
+import `in`.vrkhedkr.petcare.repository.PetCareRepositoryImpl
 import `in`.vrkhedkr.petcare.view.DialogHelper
 import `in`.vrkhedkr.petcare.view.adpaters.PetListAdapter
 import `in`.vrkhedkr.petcare.viewmodel.MainActivityViewModel
+import `in`.vrkhedkr.petcare.viewmodel.MainActivityViewModelFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -22,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(MainActivityViewModel::class.java)
+        viewModel = ViewModelProvider(this,
+            MainActivityViewModelFactory(PetCareRepositoryImpl())).get(MainActivityViewModel::class.java)
         initLayout()
         loadData()
     }
