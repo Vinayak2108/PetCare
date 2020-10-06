@@ -11,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class MainActivityViewModel(private val repo: PetCareRepository) : ViewModel(){
 
@@ -28,7 +29,7 @@ class MainActivityViewModel(private val repo: PetCareRepository) : ViewModel(){
     }
 
     fun isWithinWorkingHr(): Boolean {
-        return DateUtil.isNowBetween(getWorkingHR())
+        return DateUtil.isNowBetween(getWorkingHR(), Calendar.getInstance())
     }
 
     fun loadConfig(){
