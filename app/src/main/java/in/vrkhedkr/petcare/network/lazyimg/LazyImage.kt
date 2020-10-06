@@ -1,6 +1,7 @@
 package `in`.vrkhedkr.petcare.network.lazyimg
 
 import `in`.vrkhedkr.petcare.app.PetCare
+import `in`.vrkhedkr.petcare.util.DeviceHelper
 import `in`.vrkhedkr.petcare.util.DimenUtil
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -80,7 +81,7 @@ object LazyImage {
         BitmapFactory.decodeStream(tempFile.inputStream(),null, bmOptions)
         val photoW = bmOptions.outWidth
         val photoH = bmOptions.outHeight
-        val desiredWidth = DimenUtil.dp2Px(80f)
+        val desiredWidth = DimenUtil.dp2Px(80f,DeviceHelper.getDensity())
         val scaleFactor: Int = (photoW / desiredWidth).coerceAtLeast(photoH / desiredWidth)
         bmOptions.inJustDecodeBounds = false
         bmOptions.inSampleSize = scaleFactor

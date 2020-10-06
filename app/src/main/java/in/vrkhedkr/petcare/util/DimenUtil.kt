@@ -1,15 +1,13 @@
 package `in`.vrkhedkr.petcare.util
 
-import `in`.vrkhedkr.petcare.app.PetCare
-
 object DimenUtil {
 
-    fun pt2Px(points: Int): Float {
-        return (points*PetCare.getContext().resources.displayMetrics.density)/72
+    fun pt2Px(points: Int,density: Float): Float {
+        return (points*density)/72
     }
 
-    fun dp2Px(dp: Float): Int {
-        return (dp * PetCare.getContext().resources.displayMetrics.density + 0.5f).toInt()
+    fun dp2Px(dp: Float, density: Float): Int {
+        return (dp * density + 0.5f).toInt()
     }
 
 }
