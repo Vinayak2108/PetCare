@@ -13,7 +13,7 @@ object DateUtil{
         return try {
             builder.append(serverFormatString.substring(8,10))
             builder.append(" ")
-            builder.append(MONTH_SHORT[serverFormatString.substring(5,7).toInt()])
+            builder.append(MONTH_SHORT[serverFormatString.substring(5,7).toInt()-1])
             builder.append(" ")
             builder.append(serverFormatString.substring(0,4))
             builder.toString()
@@ -22,25 +22,24 @@ object DateUtil{
         }
     }
 
-    fun isNowBetween(workingHR: String?): Boolean {
+    fun isNowBetween(workingHR: String?, now:Calendar): Boolean {
         if(workingHR == null){
             return false
         }else{
             try {
-                val now = Calendar.getInstance()
                 /**
                  * Considering WeekDays are fixed i.e Monday to Friday.
                  * Customisation is impossible with only first letter
                  * because more that one week day have same initial.
                  */
-                if(now.get(DAY_OF_WEEK) >= Calendar.MONDAY && now.get(DAY_OF_WEEK) <= Calendar.FRIDAY){
+                return if(now.get(DAY_OF_WEEK) >= Calendar.MONDAY && now.get(DAY_OF_WEEK) <= Calendar.FRIDAY){
                     val df = SimpleDateFormat("HH:mm", Locale.ENGLISH)
                     val startTime = df.parse(workingHR.substring(4,9))
                     val endTime = df.parse(workingHR.substring(12,17))
                     val currentTime = df.parse(df.format(now.time))
-                    return currentTime?.after(startTime) ?: false && currentTime?.before(endTime) ?: false
+                    currentTime?.after(startTime) ?: false && currentTime?.before(endTime) ?: false
                 }else{
-                    return false
+                    false
                 }
 
             }catch (e:Exception){
